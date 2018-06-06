@@ -191,6 +191,16 @@
                         </div>
                     <%--</div>--%>
                     <%--</table>--%>
+                        <div class="box col-lg-10 col-md-11 col-sm-12">
+                            <div class="box-header">
+
+                                <div id="editor">
+                                    <h1>Hello world!</h1>
+                                    <p>I'm an instance of <a href="http://ckeditor.com">CKEditor</a>.</p>
+                                </div>
+
+                            </div></div>
+
                 </div>
             </div>
 
@@ -211,5 +221,9 @@
         $(".textarea").wysihtml5();
     });
 </script>
+    <script>
+        initSample();
+    </script>
+
 <%@include file="/WEB-INF/view/layout/footer.jsp" %>
 

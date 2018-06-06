@@ -1,9 +1,9 @@
 package com.projectstoryseed.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.persistence.*;
 
 
 @Entity
@@ -12,6 +12,8 @@ public class Story {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String storyId;
+
+    @NotEmpty (message = "Story Title must not be empty")
     private String storyTitle;
     private String likes;
     private String genre;
@@ -21,6 +23,9 @@ public class Story {
     private String summary;
     private String tag;
     private String status;
+
+    @Transient
+    private MultipartFile storyImage;
 
     //fk author
     //likes
@@ -99,4 +104,12 @@ public class Story {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public String getLikes() {return likes;}
+
+    public void setLikes(String likes) {this.likes = likes;}
+
+    public MultipartFile getStoryImage() {return storyImage;}
+
+    public void setStoryImage(MultipartFile storyImage) {this.storyImage = storyImage;}
 }

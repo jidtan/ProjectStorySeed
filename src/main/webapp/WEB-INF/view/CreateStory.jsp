@@ -28,25 +28,33 @@
     <div class="col-md-12" style="padding-top: 50px;">
 
         <div class="row">
-            <form role="form">
+            <%--<form role="form">--%>
+            <form:form action="${pageContext.request.contextPath}/admin/CreateStory" method="post"
+                       commandName="story" enctype="multipart/form-data">
+                <%--<div class="col-md-5">--%>
+                    <%--&lt;%&ndash;<div class="box box-primary">&ndash;%&gt;--%>
+                    <%--<div class="container">--%>
+                        <%--<div class="col-md-5">--%>
+                            <%--<img id="blah" src="http://placehold.it/180" alt="your image" class="image-thumbnail"--%>
+                                 <%--width="300px" length="500px"/>--%>
+                        <%--</div>--%>
+                        <%--<br/><br/>--%>
+                        <%--<input type='file' onchange="readURL(this);"/>--%>
+                        <%--&lt;%&ndash;<input type="file" name="imageUpload" id="imageUpload" class="hide"/>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<label for="imageUpload" class="btn btn-large">Select file</label><br/><br/><br/>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<img src="http://placehold.it/180" id="imagePreview" alt="Preview Image" width="200px"/>&ndash;%&gt;--%>
+
+                    <%--</div>--%>
+                    <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+                <%--</div>--%>
+
                 <div class="col-md-5">
-                    <%--<div class="box box-primary">--%>
-                    <div class="container">
-                        <div class="col-md-5">
-                            <img id="blah" src="http://placehold.it/180" alt="your image" class="image-thumbnail"
-                                 width="300px" length="500px"/>
-                        </div>
-                        <br/><br/>
-                        <input type='file' onchange="readURL(this);"/>
-                        <%--<input type="file" name="imageUpload" id="imageUpload" class="hide"/>--%>
-                        <%--<label for="imageUpload" class="btn btn-large">Select file</label><br/><br/><br/>--%>
-                        <%--<img src="http://placehold.it/180" id="imagePreview" alt="Preview Image" width="200px"/>--%>
+                    <div class="form-group">
+                        <label class="control-label" for="storyImage">Upload Picture</label>
+                        <form:input id="storyImage" path="storyImage" type="file" class="form:input-large"/>
 
                     </div>
-                    <%--</div>--%>
                 </div>
-
-
                 <div class="col-md-5 ">
                     <div class="panel panel-default">
                     <%--<div class="box box-primary">--%>
@@ -59,18 +67,20 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label for="storyTitle">Title</label>
-                            <input type="text" class="form-control" id="storyTitle"
-                                   placeholder="Story Title">
+                            <%--<form:errors path="storyTitle" cssStyle="color:#9f191f;"/>--%>
+                            <form:input path="storyTitle" type="text" class="form-control" id="storyTitle"
+                                   placeholder="Story Title"/>
                         </div>
 
                         <div class="form-group">
-                            <label>Description</label>
-                            <textarea class="form-control" rows="3"
-                                      placeholder="Write a brief description..."></textarea>
+                            <label for="summary">Summary</label>
+                            <form:textarea path="summary" id="summary" class="form-control" rows="3"
+                                      placeholder="Write a brief description..."></form:textarea>
                         </div>
+
                         <div class="form-group">
                             <label>Genre</label>
-                            <select class="form-control">
+                            <select class="form-control select2" style="width: 100%;">
                                 <option>Romance</option>
                                 <option>Horror</option>
                                 <option>Comedy</option>
@@ -79,11 +89,10 @@
                             </select>
                         </div>
 
+
                         <div class="form-group">
                             <label>Tags</label>
-                            <select class="form-control select2 select2-hidden-accessible" multiple="multiple"
-                                    data-placeholder="select tags" style="width: 100%;" tabindex="-1"
-                                    aria-hidden="true">
+                            <select class="form-control select2" multiple="multiple" data-placeholder="" style="width: 100%;">
                                 <option>Family</option>
                                 <option>Crime</option>
                                 <option>Suspense</option>
@@ -92,20 +101,30 @@
                                 <option>Teen</option>
                                 <option>Life</option>
                             </select>
-                            <%--<span class="select2 select2-container select2-container--default select2-container--focus" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="textbox" aria-autocomplete="list" placeholder="Select a State" style="width: 618px;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>--%>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status">Status</label><br>
+                            <label class="radio-inline"><form:radiobutton path="status" id="status"
+                                                                          value="ongoing"/>Ongoing</label>
+                            <%--<label class="checkbox-inline"><form:checkbox path="status" id="status"--%>
+                                                                          <%--value="hiatus"/>Hiatus</label>--%>
+                            <label class="radio-inline"><form:radiobutton path="status" id="status"
+                                                                          value="completed"/>Completed</label>
                         </div>
                     </div>
                     <!-- /.box-body -->
 
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-success">Next</button>
                     </div>
 
                     <%--</div>--%>
                     </div>
                 </div>
-            </form>
-        </div>
+                </div>
+            </form:form>
+
     </div>
 
 
@@ -129,7 +148,7 @@
 <%@include file="/WEB-INF/view/layout/footer.jsp" %>
 
 <!-- Select2 -->
-<script src="/resources/plugins/select2/select2.full.min.js"></script>
+<script src="<c:url value="/resources/plugins/select2/select2.full.min.js"/>"></script>
 
 <script>
     $(function () {

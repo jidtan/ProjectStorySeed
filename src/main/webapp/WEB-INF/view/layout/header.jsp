@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="Spring" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: JadeMakie
@@ -53,7 +54,12 @@
 <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>-->
 <%--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>--%>
 
-    <title>Title</title>
+    <%--CK EDITOR--%>
+    <script src="../ckeditor.js"></script>
+    <script src="js/sample.js"></script>
+    <link rel="stylesheet" href="css/samples.css">
+
+    <title>StorySeed</title>
 </head>
 
 <body class="fixed skin-green-light sidebar-mini wysihtml5-supported">
@@ -78,6 +84,10 @@
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <!-- Messages: style can be found in dropdown.less-->
+
+                    <li>
+                       <a href="<spring:url value="admin/CreateStory"/>" class="btn btn-primary">Create Story</a>
+                    </li>
                     <li class="dropdown messages-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-envelope-o"></i>

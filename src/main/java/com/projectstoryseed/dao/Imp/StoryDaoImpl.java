@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -25,12 +26,26 @@ public class StoryDaoImpl implements StoryDao {
         session.flush();
     }
 
-    public Story getStoryById(String id){
-        Session session = sessionFactory.getCurrentSession();
-        Story Story = (Story) session.get(Story.class, id);
+//    public Story getStoryById(String id){
+//        Session session = sessionFactory.getCurrentSession();
+//        Story Story = (Story) session.get(Story.class, id);
+//
+//        return Story;
+//    }
 
-        return Story;
+    public Story getStoryById(String storyId) throws IOException{
+        Session session = sessionFactory.getCurrentSession();
+        Story Story = (Story) session.get(Story.class, storyId);
+
+        for (Story story:getStoryList()){
+            if(story.getStoryId().equals(storyId)){
+                return story;
+            }
+        }
+
+        throw new IOException("No story found");
     }
+
 
     public List<Story> getStoryList(){
         Session session = sessionFactory.getCurrentSession();
@@ -40,9 +55,10 @@ public class StoryDaoImpl implements StoryDao {
 
         return stories;
     }
-    public void deleteStory(String id){
+    public void deleteStory(String id)throws IOException{
         Session session = sessionFactory.getCurrentSession();
         session.delete(getStoryById(id));
         session.flush();
+        throw new IOException("No story found");
     }
 }

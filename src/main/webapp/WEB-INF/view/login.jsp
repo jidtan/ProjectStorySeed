@@ -1,75 +1,113 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: JadeMakie
-  Date: 4/4/2018
-  Time: 10:50 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Bootflat-Admin Template</title>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="shortcut icon" href="favicon_16.ico"/>
-    <link rel="bookmark" href="favicon_16.ico"/>
-    <!-- site css -->
-    <link rel="stylesheet" href="/resources/dist/css/site.min.css">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
-    <!-- <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'> -->
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
-    <!--[if lt IE 9]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>StorySeed | Log in</title>
 
-    <![endif]-->
-    <script type="text/javascript" src="/resources/dist/js/site.min.js"></script>
-    <style>
-        body {
-            padding-top: 40px;
-            padding-bottom: 40px;
-            background-color: #303641;
-            color: #C1C3C6
-        }
-    </style>
+
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap.min.css"/>">
+    <!-- Font Awesome -->
+    <%--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">--%>
+    <!-- Ionicons -->
+    <%--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">--%>
+    <!-- Theme style -->
+    <link rel="stylesheet" href="<c:url value="/resources/dist/css/AdminLTE.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/dist/css/AdminLTE.css"/>">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
+    -->
+    <link rel="stylesheet" href="<c:url value="/resources/dist/css/skins/skin-green-light.min.css"/>">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="<c:url value="resources/plugins/iCheck/square/blue.css"/>">
+
+
 </head>
-<body>
-<div class="container">
-    <form class="form-signin" role="form" action="index.html">
-        <h3 class="form-signin-heading">Please sign in</h3>
-        <div class="form-group">
-            <div class="input-group">
-                <div class="input-group-addon">
-                    <i class="glyphicon glyphicon-user"></i>
-                </div>
-                <input type="text" class="form-control" name="username" id="username" placeholder="Username" autocomplete="off" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="input-group">
-                <div class="input-group-addon">
-                    <i class=" glyphicon glyphicon-lock "></i>
-                </div>
-                <input type="password" class="form-control" name="password" id="password" placeholder="Password" autocomplete="off" />
-            </div>
-        </div>
-
-        <label class="checkbox">
-            <input type="checkbox" value="remember-me"> &nbsp Remember me
-        </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>
-
-</div>
-<div class="clearfix"></div>
-<br><br>
-<!--footer-->
-<div class="site-footer login-footer">
-    <div class="container">
-        <div class="copyright clearfix text-center">
-            <p><b>Bootflat</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="getting-started.html">Getting Started</a>&nbsp;&bull;&nbsp;<a href="index.html">Documentation</a>&nbsp;&bull;&nbsp;<a href="https://github.com/Bootflat/Bootflat.UI.Kit.PSD/archive/master.zip">Free PSD</a>&nbsp;&bull;&nbsp;<a href="colors.html">Color Picker</a></p>
-            <p>Code licensed under <a href="http://opensource.org/licenses/mit-license.html" target="_blank" rel="external nofollow">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/" rel="external nofollow">CC BY 3.0</a>.</p>
-        </div>
+<body class="hold-transition login-page">
+<div class="login-box">
+    <div class="login-logo">
+        <a href="/home"><b>Story</b>Seed</a>
     </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">Sign in to start your session</p>
+        <c:if test="${not empty msg}">
+            <div class="msg"> ${msg}</div>
+        </c:if>
+
+
+        <form name="loginForm" action="<c:url value="/j_spring_security_check"/>" method="post">
+            <c:if test="${not empty error}">
+                <div class="error" style="color:#ff0000;">${error}</div>
+            </c:if>
+            <div class="form-group has-feedback">
+                <input type="text" id="username" name="username" class="form-control" placeholder="Username">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="checkbox icheckbox_flat-blue">
+                        <label>
+                            <input type="checkbox"> Remember Me
+                        </label>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                </div>
+                <!-- /.col -->
+            </div>
+
+        </form>
+
+        <div class="social-auth-links text-center">
+            <p>- OR -</p>
+            <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
+                Facebook</a>
+            <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
+                Google+</a>
+        </div>
+        <!-- /.social-auth-links -->
+
+        <a href="#">I forgot my password</a><br>
+        <a href="#" class="text-center">Register a new membership</a>
+
+    </div>
+    <!-- /.login-box-body -->
 </div>
+<!-- /.login-box -->
+
+<!-- jQuery 2.2.3 -->
+<script src="/resources/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js"/>"></script>
+<!-- iCheck -->
+<script src="<c:url value="resources/plugins/iCheck/icheck.min.js"/>"></script>
+<script>
+    $(function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' // optional
+        });
+    });
+</script>
 </body>
 </html>

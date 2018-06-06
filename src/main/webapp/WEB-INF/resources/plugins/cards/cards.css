@@ -29,14 +29,14 @@ a.text-black:focus, a.text-black:hover {
 .list-header {
     display: block;
     float: left;
-    width: 35%;
+    width: 100%;
     overflow: hidden;
     position: relative;
     border-radius: 2px 0 0 2px;
 }
 
 .list-header img {
-    width: 100%;
+    width: 75%;
 }
 
 .list-header .list-header-image:after {
@@ -46,8 +46,8 @@ a.text-black:focus, a.text-black:hover {
     position: absolute;
     top: 100%;
     left: 100%;
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
     box-shadow: 0 0 200px 100px rgba(0,0,0,.58);
     z-index: 1;
     -ms-transform: rotate(45deg);
@@ -96,7 +96,7 @@ a.text-black:focus, a.text-black:hover {
 @media only screen and (max-width: 991px) {
     .list-header {
         display: block;
-        width: 100%;
+        width: 25%;
         padding: 0;
         border-radius: 0;
     }
